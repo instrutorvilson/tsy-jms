@@ -1,0 +1,5 @@
+https://www.youtube.com/watch?v=c-Bfp3Zo2u0
+
+https://www.coffeeandtips.com/post/spring-boot-e-activemq
+
+https://spring.io/guides/gs/messaging-jms/
