@@ -13,9 +13,10 @@ import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 
 import javax.jms.ConnectionFactory;
+import java.util.HashMap;
+import java.util.Map;
 
 @SpringBootApplication
-@EnableJms
 public class ActiveMqApplication {
 
 	public static void main(String[] args) {
@@ -37,6 +38,11 @@ public class ActiveMqApplication {
 	public MessageConverter jacksonJmsMessageConverter() {
 		MappingJackson2MessageConverter converter =
 				new MappingJackson2MessageConverter();
+
+		Map<String, Class<?>> typeIdMappings = new HashMap<String, Class<?>>();
+		typeIdMappings.put("_type", Ticket.class);
+		converter.setTypeIdMappings(typeIdMappings);
+
 		converter.setTargetType(MessageType.TEXT);
 		converter.setTypeIdPropertyName("_type");
 		return converter;
